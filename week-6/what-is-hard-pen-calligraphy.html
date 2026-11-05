@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>硬筆書法是什麼？一分鐘認識（有聲）</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@700;900&display=swap">
+<style>
+:root{--bg:#dfe6dc;--ink:#1b2a5c;--red:#d2473a;--paper:#eef3ec;--yellow:#ffd84d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181a}}
+:root[data-theme="dark"]{--bg:#14181a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--bg);display:grid;place-items:center;font-family:"LXGW WenKai TC","DFKai-SB","Kaiti TC",serif;overflow:hidden}
+.stage{container-type:size;position:relative;width:min(100vw,calc(100vh*9/16));aspect-ratio:9/16;max-height:100%;background:var(--paper);color:var(--ink);overflow:hidden;border-radius:2cqw;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.stage::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 7.9cqw,rgba(210,71,58,.13) 7.9cqw 8cqw)}
+.bars{position:absolute;top:2.5cqw;left:3cqw;right:3cqw;display:flex;gap:1.2cqw;z-index:5}
+.bars i{flex:1;height:.9cqw;background:rgba(27,42,92,.2);border-radius:1cqw;overflow:hidden}
+.bars b{display:block;height:100%;width:0;background:var(--ink)}
+.mute,.play,.rep{position:absolute;top:5.5cqw;right:2.5cqw;z-index:6;font:inherit;font-size:3.4cqw;font-weight:700;background:#fff;color:var(--ink);border:.4cqw solid var(--ink);border-radius:99px;padding:.5cqw 2.4cqw;cursor:pointer}
+.row2{position:absolute;top:12.8cqw;right:2.5cqw;z-index:6;display:flex;gap:1.5cqw}
+.row2 .play,.row2 .rep{position:static}
+.vsel{position:absolute;top:20.1cqw;right:2.5cqw;z-index:6;font:inherit;font-size:3.2cqw;font-weight:700;max-width:44cqw;background:#fff;color:var(--ink);border:.4cqw solid var(--ink);border-radius:2cqw;padding:.5cqw 1.5cqw;cursor:pointer}
+.scene{position:absolute;inset:0;padding:12cqw 8cqw 24cqw;display:none;flex-direction:column;justify-content:center;gap:4cqw}
+.scene.on{display:flex}
+h1,h2{font-family:"Noto Serif TC",serif;font-weight:900;line-height:1.18}
+.big{font-size:15cqw}.mid{font-size:10.5cqw}.sm{font-size:5.4cqw;line-height:1.55}
+.stage.paused *{animation-play-state:paused!important}
+.on [style*="--d"]{animation:rise .6s var(--d) both}
+@keyframes rise{from{opacity:0;transform:translateY(3cqw)}to{opacity:1;transform:none}}
+.pill{align-self:flex-start;background:var(--yellow);padding:1.6cqw 4.5cqw;border-radius:99px;font-weight:700;font-size:5.4cqw;transform:rotate(-2deg)}
+.chips{display:flex;flex-wrap:wrap;gap:2.4cqw}
+.chip{background:#fff;border:.4cqw solid var(--ink);border-radius:2cqw;padding:1.2cqw 3.6cqw;font-size:5.4cqw;font-weight:700}
+.under{width:70cqw;height:6cqw;overflow:visible}
+.under path{fill:none;stroke:var(--red);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.on .under path{animation:draw .8s var(--d) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.cmp{width:100%;background:#fff;border:.4cqw solid var(--ink);border-radius:3cqw;padding:2cqw 4cqw}
+.cmp svg{width:100%;display:block}
+.cmp p{font-size:5cqw;font-weight:700}
+.brush{fill:var(--ink);transform-box:fill-box;transform-origin:left center;transform:scaleX(0)}
+.on .brush{animation:grow 1.2s var(--d) forwards}
+@keyframes grow{to{transform:scaleX(1)}}
+.pen{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.on .pen{animation:draw 1.2s var(--d) forwards}
+.grid{width:72cqw;height:72cqw;align-self:center;background:#fff;border:.6cqw solid var(--red)}
+.grid .g{stroke:var(--red);stroke-width:4;stroke-dasharray:20 20;opacity:.55}
+.k{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:34;stroke:var(--ink);stroke-dasharray:1;stroke-dashoffset:1}
+.on .k{animation:draw var(--u,.8s) var(--d) linear forwards,tint calc(var(--u,.8s) + 1s) var(--d) both}
+@keyframes tint{0%,30%{stroke:var(--red)}100%{stroke:var(--ink)}}
+.on .chip.c{animation:chipOn 1s var(--d) both}
+.chip.c{opacity:.25}
+@keyframes chipOn{0%{opacity:.25;background:var(--yellow);transform:scale(1.15)}35%{opacity:1;background:var(--yellow);transform:scale(1.15)}100%{opacity:1;background:#fff;transform:none}}
+.tip{display:flex;gap:4cqw;align-items:center;background:#fff;border:.4cqw solid var(--ink);border-radius:3cqw;padding:3.5cqw 4cqw}
+.tip span{font-family:"Noto Serif TC",serif;font-weight:900;font-size:9cqw;color:var(--red);min-width:9cqw;text-align:center}
+.tip p{font-size:5.2cqw;line-height:1.5}
+.tip em{font-style:normal;font-weight:700}
+.cap{position:absolute;left:6cqw;right:6cqw;bottom:8cqw;z-index:5;text-align:center;font-size:5cqw;font-weight:700;line-height:1.5;background:rgba(255,255,255,.94);border:.4cqw solid var(--ink);border-radius:3cqw;padding:2cqw 3cqw;min-height:13cqw;display:flex;align-items:center;justify-content:center}
+.cap:empty{visibility:hidden}
+.start{position:absolute;inset:0;z-index:9;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5cqw;text-align:center;padding:10cqw}
+.start.off{display:none}
+.start h1{font-size:13cqw}
+.start p{font-size:5cqw}
+.start .pill{align-self:center;transform:none;font-size:6cqw;padding:2.4cqw 7cqw}
+@media (prefers-reduced-motion:reduce){.stage *{animation-duration:.01ms!important;animation-delay:0s!important}}
+</style>
+</head>
+<body>
+<main class="stage" id="stage" aria-label="硬筆書法介紹短片">
+<div class="bars" id="bars"></div>
+<button class="mute" id="mute" type="button">🔊 聲音開</button>
+<div class="row2"><button class="rep" id="rep" type="button">↻ 重播</button><button class="play" id="play" type="button">⏸ 暫停</button></div>
+<select class="vsel" id="vsel" aria-label="選擇語音"></select>
+
+<section class="scene">
+  <h1 class="big" style="--d:.2s">你的字，</h1>
+  <h1 class="big" style="--d:1s">有人誇過嗎？</h1>
+  <svg class="under" viewBox="0 0 70 6" style="--d:1.8s"><path pathLength="1" d="M2 3.5 C14 1 26 5.5 38 3 S58 2 68 3.5"/></svg>
+  <div class="pill" style="--d:3s">一分鐘認識硬筆書法</div>
+</section>
+
+<section class="scene">
+  <h2 class="big" style="--d:.2s">硬筆書法</h2>
+  <p class="sm" style="--d:1s">用硬質的筆，把漢字寫得工整、好看，也寫得有個性。</p>
+  <div class="chips">
+    <span class="chip" style="--d:4.8s">鋼筆</span>
+    <span class="chip" style="--d:5.4s">原子筆</span>
+    <span class="chip" style="--d:6s">鉛筆</span>
+    <span class="chip" style="--d:6.6s">中性筆</span>
+  </div>
+</section>
+
+<section class="scene">
+  <h2 class="mid" style="--d:.2s">和毛筆差在哪？</h2>
+  <div class="cmp" style="--d:.8s">
+    <p>毛筆　粗細隨力道變化</p>
+    <svg viewBox="0 0 100 26"><path class="brush" style="--d:1.4s" d="M4 14 C18 4 30 4 50 10 S82 18 96 6 C84 24 62 22 50 19 S18 22 4 14Z"/></svg>
+  </div>
+  <div class="cmp" style="--d:4.4s">
+    <p>硬筆　線條粗細一致</p>
+    <svg viewBox="0 0 100 26"><path class="pen" pathLength="1" style="--d:5s" d="M4 14 C18 6 30 6 50 12 S82 18 96 8"/></svg>
+  </div>
+  <p class="sm" style="--d:6.8s">好不好看，靠<b>結構</b>與<b>筆畫位置</b>。</p>
+</section>
+
+<section class="scene">
+  <h2 class="mid" style="--d:.2s">永字八法</h2>
+  <svg class="grid" viewBox="0 0 1024 1024" aria-label="永字筆畫動畫"><line class="g" x1="512" y1="0" x2="512" y2="1024"/><line class="g" x1="0" y1="512" x2="1024" y2="512"/><line class="g" x1="0" y1="0" x2="1024" y2="1024"/><line class="g" x1="1024" y1="0" x2="0" y2="1024"/><g transform="translate(-20 36)"><path class="k" pathLength="1" style="--d:3.4s;--u:0.6s" d="M428 76C440 83 486 108 503 119C520 130 527 137 533 144C539 151 538 156 539 159"/><path class="k" pathLength="1" style="--d:4.7s;--u:4.2s" d="M309 321C317 321 332 326 358 320C384 314 441 292 462 287C483 282 474 287 482 292C490 297 504 314 508 319C508 396 506 692 505 779C504 866 504 825 500 841C496 857 482 870 478 876C458 867 376 831 355 822"/><path class="k" pathLength="1" style="--d:9.0s;--u:2.8s" d="M110 509C116 510 134 515 149 516C164 517 169 519 198 513C227 507 298 487 322 482C346 477 332 480 339 483C346 486 362 496 367 498C363 510 361 535 345 567C329 599 297 658 273 692C249 726 226 749 201 771C176 793 138 814 125 822"/><path class="k" pathLength="1" style="--d:12.0s;--u:0.9s" d="M725 279C728 283 739 297 743 304C747 311 749 318 749 322C749 326 758 315 743 330C728 345 685 386 656 411C627 436 584 467 569 479C554 491 569 484 569 485"/><path class="k" pathLength="1" style="--d:13.1s;--u:1.6s" d="M532 459C535 466 545 490 551 501C557 512 547 499 568 522C589 545 648 610 678 641C708 672 730 690 750 706C770 722 767 729 801 737C835 745 928 752 954 755"/></g></svg>
+  <div class="chips">
+    <span class="chip c" style="--d:3.4s">點</span><span class="chip c" style="--d:4.7s">橫</span>
+    <span class="chip c" style="--d:5.7s">豎</span><span class="chip c" style="--d:8.1s">鉤</span>
+    <span class="chip c" style="--d:9.0s">挑</span><span class="chip c" style="--d:10.1s">彎</span>
+    <span class="chip c" style="--d:12.0s">撇</span><span class="chip c" style="--d:13.1s">捺</span>
+  </div>
+</section>
+
+<section class="scene">
+  <h2 class="mid" style="--d:.2s">三個入門訣竅</h2>
+  <div class="tip" style="--d:1s"><span>一</span><p><em>坐姿口訣：</em>一拳、一尺、一寸（胸離桌一拳、眼離紙一尺、手指離筆尖一寸）</p></div>
+  <div class="tip" style="--d:4.6s"><span>二</span><p><em>先練基本筆畫：</em>橫、豎、撇、捺寫穩了，字就穩了</p></div>
+  <div class="tip" style="--d:8.2s"><span>三</span><p><em>善用格子：</em>田字格幫你找到字的重心</p></div>
+</section>
+
+<section class="scene">
+  <h2 class="big" style="--d:.2s">從「永」字<br>開始吧</h2>
+  <p class="sm" style="--d:2s">每天寫一個字，慢慢就有感覺。</p>
+  <div class="pill" style="--d:5.4s">留言：你最想練好哪個字？</div>
+</section>
+
+<div class="cap" id="cap" aria-live="polite"></div>
+
+<div class="start" id="start">
+  <h1>硬筆書法<br>是什麼？</h1>
+  <p>一分鐘有聲介紹<br>請開啟裝置聲音</p>
+  <div class="pill">點一下開始 ▶</div>
+</div>
+</main>
+
+<script>
+(function(){
+  var D=[5500,7500,9500,16000,12000,9500],
+  L=[
+    [[200,"你的字，有人誇過嗎？"],[3000,"一分鐘，認識硬筆書法。"]],
+    [[200,"硬筆書法，就是用硬質的筆，把漢字寫得工整又好看。"],[4800,"鋼筆、原子筆、鉛筆，都可以。"]],
+    [[200,"和毛筆比起來，毛筆的線條會隨力道變粗變細。"],[4400,"硬筆的線條，則粗細一致。"],[6800,"所以好不好看，靠的是結構。"]],
+    [[200,"永字八法，一個永字，包含八種筆法。"],[3400,"點。"],[4700,"橫。"],[5700,"豎。"],[8100,"鉤。"],[9000,"挑。"],[10100,"彎。"],[12000,"撇。"],[13100,"捺。"]],
+    [[200,"三個入門訣竅。"],[1000,"第一，坐姿口訣：一拳、一尺、一寸。"],[4600,"第二，先練橫豎撇捺。"],[8200,"第三，用田字格找字的重心。"]],
+    [[200,"從永字開始吧。"],[2000,"每天寫一個字，慢慢就有感覺。"],[5400,"留言告訴我，你最想練好哪個字？"]]
+  ],
+  stage=document.getElementById("stage"),
+  scenes=[].slice.call(stage.querySelectorAll(".scene")),
+  barBox=document.getElementById("bars"),
+  cap=document.getElementById("cap"),
+  startEl=document.getElementById("start"),
+  muteBtn=document.getElementById("mute"),
+  playBtn=document.getElementById("play"),
+  vsel=document.getElementById("vsel"),
+  fills=[],idx=0,li=0,elapsed=0,last=0,paused=false,started=false,muted=false,ended=false,voice=null,
+  tts=("speechSynthesis" in window)?window.speechSynthesis:null;
+  D.forEach(function(){var i=document.createElement("i"),b=document.createElement("b");i.appendChild(b);barBox.appendChild(i);fills.push(b)});
+  function pickVoice(){
+    if(!tts)return;
+    var v=tts.getVoices()||[];
+    voice=v.filter(function(x){return /zh[-_]TW|cmn[-_]Hant/i.test(x.lang)&&/Microsoft|Natural|Google/i.test(x.name)}).sort(function(a,b){return (/Natural/i.test(a.name)?0:1)-(/Natural/i.test(b.name)?0:1)})[0]||
+          v.filter(function(x){return /zh[-_]TW|cmn[-_]Hant/i.test(x.lang)})[0]||
+          v.filter(function(x){return /^zh/i.test(x.lang)})[0]||null;
+  }
+  var chosen=false;
+  function fillVoices(){
+    if(!tts)return;
+    var v=(tts.getVoices()||[]).filter(function(x){return /zh[-_]TW|cmn[-_]Hant/i.test(x.lang)});
+    if(!v.length){vsel.innerHTML="<option>（沒有 zh-TW 語音）</option>";vsel.disabled=true;return}
+    vsel.disabled=false;
+    v.sort(function(a,b){function rk(x){return /Natural/i.test(x.name)?0:/Microsoft|Google/i.test(x.name)?1:2}return rk(a)-rk(b)||a.name.localeCompare(b.name)});
+    if(!chosen)pickVoice();
+    vsel.innerHTML="";
+    v.forEach(function(x){var o=document.createElement("option");o.value=x.voiceURI;o.textContent=x.name+"（"+x.lang+"）";vsel.appendChild(o)});
+    if(voice)vsel.value=voice.voiceURI;
+  }
+  if(tts){
+    pickVoice();fillVoices();
+    tts.onvoiceschanged=function(){fillVoices()};
+    vsel.addEventListener("click",function(e){e.stopPropagation()});
+    vsel.addEventListener("change",function(){
+      var v=(tts.getVoices()||[]).filter(function(x){return x.voiceURI===vsel.value})[0];
+      if(v){voice=v;chosen=true;tts.cancel();say("這是目前選擇的語音。")}
+    });
+  }else vsel.style.display="none";
+  function say(t){
+    if(!tts||muted)return;
+    var u=new SpeechSynthesisUtterance(t);
+    u.lang="zh-TW";if(voice)u.voice=voice;u.rate=1;
+    tts.speak(u);
+  }
+  function finish(){
+    ended=true;paused=false;stage.classList.remove("paused");
+    if(tts)tts.cancel();
+    fills.forEach(function(f){f.style.width="100%"});
+    playBtn.textContent="▶ 播放";
+  }
+  function go(n,auto){
+    if(n<0)n=0;
+    if(n>=D.length){finish();return}
+    ended=false;playBtn.textContent=paused?"▶ 播放":"⏸ 暫停";
+    if(tts&&!auto)tts.cancel();
+    scenes.forEach(function(s){s.classList.remove("on")});
+    void stage.offsetWidth;
+    scenes[n].classList.add("on");
+    idx=n;li=0;elapsed=0;cap.textContent="";
+    fills.forEach(function(f,i){f.style.width=i<n?"100%":"0"});
+  }
+  function tick(now){
+    if(started&&!paused&&!ended){
+      elapsed+=now-last;
+      while(li<L[idx].length&&elapsed>=L[idx][li][0]){cap.textContent=L[idx][li][1];say(L[idx][li][1]);li++}
+      if(elapsed>=D[idx]){var busy=tts&&!muted&&(tts.speaking||tts.pending);if(!busy)go(idx+1,true);else if(elapsed>=D[idx]+5000){tts.cancel();go(idx+1,true)}else fills[idx].style.width="100%"}
+      else fills[idx].style.width=(elapsed/D[idx]*100)+"%";
+    }
+    last=now;requestAnimationFrame(tick);
+  }
+  function setPause(p){
+    if(ended){go(0);return}
+    paused=p;stage.classList.toggle("paused",p);
+    playBtn.textContent=p?"▶ 播放":"⏸ 暫停";
+    if(tts){p?tts.pause():tts.resume()}
+  }
+  document.getElementById("rep").addEventListener("click",function(e){
+    e.stopPropagation();
+    if(!started)return;
+    if(tts){tts.cancel();tts.resume()}
+    paused=false;stage.classList.remove("paused");
+    go(0);
+  });
+  playBtn.addEventListener("click",function(e){e.stopPropagation();if(started)setPause(!paused)});
+  muteBtn.addEventListener("click",function(e){
+    e.stopPropagation();muted=!muted;
+    muteBtn.textContent=muted?"🔇 聲音關":"🔊 聲音開";
+    if(muted&&tts)tts.cancel();
+  });
+  stage.addEventListener("click",function(e){
+    if(!started){started=true;startEl.classList.add("off");go(0);return}
+    var r=stage.getBoundingClientRect(),x=(e.clientX-r.left)/r.width;
+    if(x<.28)go(idx-1);
+    else if(x>.72)go(idx+1);
+    else setPause(!paused);
+  });
+  document.addEventListener("keydown",function(e){
+    if(!started)return;
+    if(e.key==="ArrowRight")go(idx+1);
+    else if(e.key==="ArrowLeft")go(idx-1);
+    else if(e.key===" "){e.preventDefault();setPause(!paused)}
+  });
+  requestAnimationFrame(function(t){last=t;requestAnimationFrame(tick)});
+})();
+</script>
+</body>
+</html>
