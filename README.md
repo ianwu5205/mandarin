@@ -9,4 +9,4 @@
 | 頁面 | 說明 |
 |------|------|
 | [硬筆書法是什麼？](https://ianwu5205.github.io/mandarin/pages/what-is-hard-pen-calligraphy.html) | 硬筆書法是什麼——短介紹（有聲） |
-| [用 iPhone 打中文](https://ianwu5205.github.io/mandarin/pages/type-chinese-on-iphone.html) | 如何在 iPhone 開啟並輸入中文 |
+| [用手機打中文](https://ianwu5205.github.io/mandarin/pages/type-chinese-on-phone.html) | 如何在 iPhone 與 Android 開啟並輸入中文 |
